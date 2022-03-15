@@ -1,3 +1,5 @@
+package AES.CBC;
+
 import java.io.*;
 import javax.crypto.*;
 import javax.crypto.spec.*;
@@ -13,6 +15,7 @@ public class AESCBCEncrypt
     {
         try
         {
+            args = new String[]{"My secret message to encrypt."};
             if (args.length != 1)
             {
                 System.out.println("Please provide input as one argument. Use quotation marks if needed.");
@@ -28,8 +31,7 @@ public class AESCBCEncrypt
             keyOIS.close();
             keyFIS.close();
 
-            // set IV (required for CBC)
-
+            // set IV (required for AES.CBC)
             byte[] iv ={0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
             IvParameterSpec ips = new IvParameterSpec(iv);
 
@@ -40,10 +42,10 @@ public class AESCBCEncrypt
             aesCipher.init(Cipher.ENCRYPT_MODE, aesKey, ips);
 
             // File for writing output
-            FileOutputStream fos = new FileOutputStream("scrambled");
+            FileOutputStream fos = new FileOutputStream("cbc_scrambled");
 
             // Read first command-line arg into a buffer.
-            // This is the messge to be encrypted
+            // This is the message to be encrypted
             byte plaintext[] = args[0].getBytes();
 
             // Encrypt the plaintext
@@ -67,7 +69,7 @@ public class AESCBCEncrypt
         }
         catch (Exception e)
         {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 }

@@ -1,3 +1,5 @@
+package AES.CBC;
+
 import java.io.*;
 import javax.crypto.*;
 import javax.crypto.spec.*;
@@ -21,7 +23,7 @@ public class AESCBCDecrypt
             keyOIS.close();
             keyFIS.close();
 
-            // set IV (required for CBC)
+            // set IV (required for AES.CBC)
             byte[] iv = new byte[] {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
             IvParameterSpec ips = new IvParameterSpec(iv);
 
@@ -32,7 +34,7 @@ public class AESCBCDecrypt
             aesCipher.init(Cipher.DECRYPT_MODE, aesKey, ips);
 
             // Read ciphertext from file and decrypt it
-            FileInputStream fis = new FileInputStream("scrambled");
+            FileInputStream fis = new FileInputStream("cbc_scrambled");
             BufferedInputStream bis = new BufferedInputStream(fis);
             CipherInputStream cis = new CipherInputStream(bis, aesCipher);
 

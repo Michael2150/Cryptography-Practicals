@@ -1,7 +1,11 @@
-import java.io.*;
-import javax.crypto.*;
+package DES;
 
-public class AESKeyGen
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+
+public class DESKeyGen
 {
     /**
      * Generates AES key and writes to file
@@ -15,15 +19,15 @@ public class AESKeyGen
         try
         {
             // File for writing output
-            FileOutputStream keyFOS = new FileOutputStream("AESKeyFile");
+            FileOutputStream keyFOS = new FileOutputStream("DESKeyFile");
             ObjectOutputStream keyOOS = new ObjectOutputStream(keyFOS);
             
-            // Generate random AES key
-            KeyGenerator keygen = KeyGenerator.getInstance("AES");
+            // Generate random DES key
+            KeyGenerator keygen = KeyGenerator.getInstance("DES");
             SecretKey aesKey = keygen.generateKey();
             keyOOS.writeObject(aesKey);
             
-            System.out.println("AES key generated and written to file: AESKeyFile");
+            System.out.println("DES key generated and written to file: DESKeyFile");
              
             keyOOS.close();
             keyFOS.close();
