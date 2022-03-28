@@ -6,12 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f91f60f0-dd1a-4cb0-95e5-50e22ab9fb8f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DESKeyFile" beforeDir="false" afterPath="$PROJECT_DIR$/DESKeyFile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cbc_scrambled" beforeDir="false" afterPath="$PROJECT_DIR$/cbc_scrambled" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecb_scrambled" beforeDir="false" afterPath="$PROJECT_DIR$/ecb_scrambled" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AES/CBCvECB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AES/CBCvECB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DES/CBC/DESCBCDecrypt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DES/CBC/DESCBCDecrypt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DES/CBC/DESCBCEncrypt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DES/CBC/DESCBCEncrypt.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,11 +117,11 @@
       </method>
     </configuration>
     <configuration name="DESKeyGen" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="DES.DESKeyGen" />
+      <option name="MAIN_CLASS_NAME" value="DESKeyGen" />
       <module name="Cryptography-Practicals" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="DES.*" />
+          <option name="PATTERN" value=".*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -157,7 +151,7 @@
       <workItem from="1647617506665" duration="1268000" />
       <workItem from="1648422455437" duration="16000" />
       <workItem from="1648422483498" duration="283000" />
-      <workItem from="1648472693127" duration="8794000" />
+      <workItem from="1648472693127" duration="9900000" />
     </task>
     <servers />
   </component>
