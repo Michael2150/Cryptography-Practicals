@@ -7,7 +7,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 
-
 public class DESCBCEncrypt
 {
     /**
@@ -18,9 +17,10 @@ public class DESCBCEncrypt
     {
         try
         {
-            args = new String[]{"My secret message to encrypt."};
-            if (args.length != 1)
-            {
+
+            if (args.length == 0) {
+                args = new String[]{""};
+            } else if (args.length != 1) {
                 System.out.println("Please provide input as one argument. Use quotation marks if needed.");
                 throw new Exception();
             }
@@ -30,29 +30,29 @@ public class DESCBCEncrypt
             ObjectInputStream keyOIS = new ObjectInputStream(keyFIS);
 
             // Read in the AES key
-            SecretKey aesKey = (SecretKey) keyOIS.readObject();
+            SecretKey desKey = (SecretKey) keyOIS.readObject();
             keyOIS.close();
             keyFIS.close();
 
-            // set IV (required for AES.CBC)
+            // set IV (required for CBC)
             byte[] iv ={0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
             IvParameterSpec ips = new IvParameterSpec(iv);
 
             // Create AES cipher instance
-            Cipher aesCipher = Cipher.getInstance("DES/CBC/PKCS5Padding");
+            Cipher desCipher = Cipher.getInstance("DES/CBC/PKCS5Padding");
 
             // Initialize the cipher for encryption
-            aesCipher.init(Cipher.ENCRYPT_MODE, aesKey, ips);
+            desCipher.init(Cipher.ENCRYPT_MODE, desKey, ips);
 
             // File for writing output
             FileOutputStream fos = new FileOutputStream("des_cbc_scrambled");
 
             // Read first command-line arg into a buffer.
             // This is the message to be encrypted
-            byte plaintext[] = args[0].getBytes();
+            byte[] plaintext = args[0].getBytes();
 
             // Encrypt the plaintext
-            byte[] ciphertext = aesCipher.doFinal(plaintext);
+            byte[] ciphertext = desCipher.doFinal(plaintext);
 
             // Write ciphertext to file
             fos.write(ciphertext);

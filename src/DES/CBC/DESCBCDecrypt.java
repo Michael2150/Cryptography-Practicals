@@ -23,11 +23,11 @@ public class DESCBCDecrypt
             ObjectInputStream keyOIS = new ObjectInputStream(keyFIS);
 
             // Read in the AES key
-            SecretKey aesKey = (SecretKey) keyOIS.readObject();
+            SecretKey desKey = (SecretKey) keyOIS.readObject();
             keyOIS.close();
             keyFIS.close();
 
-            // set IV (required for AES.CBC)
+            // set IV (required for CBC)
             byte[] iv = new byte[] {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
             IvParameterSpec ips = new IvParameterSpec(iv);
 
@@ -35,7 +35,7 @@ public class DESCBCDecrypt
             Cipher aesCipher = Cipher.getInstance("DES/CBC/PKCS5Padding");
 
             // Initialize the cipher for decryption
-            aesCipher.init(Cipher.DECRYPT_MODE, aesKey, ips);
+            aesCipher.init(Cipher.DECRYPT_MODE, desKey, ips);
 
             // Read ciphertext from file and decrypt it
             FileInputStream fis = new FileInputStream("des_cbc_scrambled");
