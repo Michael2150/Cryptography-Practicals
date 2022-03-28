@@ -7,6 +7,8 @@ import javax.crypto.spec.*;
 
 public class AESCBCEncrypt
 {
+    public static String lastCipherText = "";
+
     /**
      * Encrypts message provided on command line and writes to file
      * @param args
@@ -15,12 +17,8 @@ public class AESCBCEncrypt
     {
         try
         {
-            args = new String[]{"My secret message to encrypt."};
             if (args.length != 1)
-            {
-                System.out.println("Please provide input as one argument. Use quotation marks if needed.");
-                throw new Exception();
-            }
+                args = new String[]{"12345678901234567890123456"};
 
             // File containing secret AES key
             FileInputStream keyFIS = new FileInputStream("AESKeyFile");
@@ -65,7 +63,7 @@ public class AESCBCEncrypt
             }
             System.out.println("Plaintext: " + args[0]);
             System.out.println("Ciphertext: " + hexString.toString());
-
+            lastCipherText = hexString.toString();
         }
         catch (Exception e)
         {

@@ -17,12 +17,8 @@ public class AESECBEncrypt
     {
         try
         {
-            args = new String[]{"My secret message to encrypt."};
             if (args.length != 1)
-            {
-                System.out.println("Please provide input as one argument. Use quotation marks if needed.");
-                throw new Exception();
-            }
+                args = new String[]{"12345678901234567890123456"};
 
             // File containing secret AES key
             FileInputStream keyFIS = new FileInputStream("AESKeyFile");

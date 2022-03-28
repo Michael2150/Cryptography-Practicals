@@ -2,6 +2,7 @@ package AES;
 
 import java.io.*;
 import javax.crypto.*;
+import javax.crypto.spec.SecretKeySpec;
 
 public class AESKeyGen
 {
